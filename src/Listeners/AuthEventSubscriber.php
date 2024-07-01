@@ -54,9 +54,9 @@ class AuthEventSubscriber
 
                 // Set the expiration date based on whether it is a remembered login or not
                 if ($event->remember) {
-                    $login->expiresAt(Carbon::now()->addDays(config('auth_tracker.remember_lifetime', 365)));
+                    $login->expiresAt(Carbon::now()->addDays((int) config('auth_tracker.remember_lifetime', 365)));
                 } else {
-                    $login->expiresAt(Carbon::now()->addMinutes(config('session.lifetime')));
+                    $login->expiresAt(Carbon::now()->addMinutes((int) config('session.lifetime')));
                 }
 
                 // Attach the login to the user and save it
