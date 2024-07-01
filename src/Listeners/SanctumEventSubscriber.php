@@ -24,7 +24,7 @@ class SanctumEventSubscriber
 
             // Set the expiration date
             if ($minutes = config('sanctum.expiration')) {
-                $login->expiresAt(Carbon::now()->addMinutes($minutes));
+                $login->expiresAt(Carbon::now()->addMinutes((int) $minutes));
             }
 
             // Attach the login to the user and save it
